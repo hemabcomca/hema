@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated Login</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 15px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      color: #fff;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 25px;
+      font-weight: bold;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .form-control {
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: background-color 0.3s ease;
+    }
+
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: none;
+    }
+
+    ::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .btn-login {
+      width: 100%;
+      background-color: #ffffff;
+      color: #764ba2;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 1.4s;
+    }
+
+    .btn-login:hover {
+      background-color: #e5e5e5;
+      color: #333;
+    }
+
+    .form-footer {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 1.6s;
+    }
+
+    .form-footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .logo {
+      width: 60px;
+      margin-bottom: 15px;
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    /* === Animations === */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .username-input {
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    .password-input {
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 1.0s;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <img src="https://img.icons8.com/ios-filled/100/ffffff/user-male-circle.png" alt="logo" class="logo"/>
+    <h2>Login</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" class="form-control username-input" name="username" placeholder="Username" required />
+      <input type="password" class="form-control password-input" name="password" placeholder="Password" required />
+      <button type="submit" class="btn btn-login mt-2">Login</button>
+    </form>
+
+    <div class="form-footer">
+      <a href="#">Forgot Password?</a>
+    </div>
+  </div>
+
+</body>
+</html>
